@@ -1,6 +1,6 @@
 module.exports = {
 	saca: function(valor) {
-		const notas = [20, 10];
+		const notas = [50, 20, 10];
 
 		return notas.map(nota => {
 			let notaSaque = {
