@@ -11,14 +11,15 @@ module.exports = {
 			return notaSaque;
 		}).filter(nota => {
 			return nota.quantidade > 0;
-		}).reduce((resultado, nota) => {
-			if(resultado === 'Entregar') {
-				if(nota.quantidade > 1) {
-					return `${resultado} ${nota.quantidade} notas de R\$${nota.valor},00`
-				}
-				return `${resultado} ${nota.quantidade} nota de R\$${nota.valor},00`
+		}).reduce((resultado, nota, indice) => {
+			if(indice !== 0) {
+				resultado += ' e';
 			}
-			return `${resultado} e ${nota.quantidade} nota de R\$${nota.valor},00`
+			resultado += ` ${nota.quantidade} nota`;
+			if(nota.quantidade > 1) {
+				resultado += 's';
+			}
+			return `${resultado} de R\$${nota.valor},00`;
 		}, "Entregar") + '.';
 	}
 }
