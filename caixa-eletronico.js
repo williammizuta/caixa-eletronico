@@ -1,21 +1,24 @@
 module.exports = {
 	saca: function(valor) {
 		const notas = [20, 10];
-		let resposta = 'Entregar ';
-		notas.forEach(nota => {
-			let quantidade = Math.floor(valor / nota);
-			if(quantidade > 0) {
-				if(resposta !== 'Entregar ') {
-					resposta += ' e ';
-				}
-				if(quantidade === 1) {
-					resposta += `${quantidade} nota de R\$${nota},00`;
-				} else {
-					resposta += `${quantidade} notas de R\$${nota},00`;
-				}
-				valor %= nota;
+
+		return notas.map(nota => {
+			let notaSaque = {
+				valor: nota,
+				quantidade: Math.floor(valor / nota)
 			}
-		});
-		return resposta + '.';
+			valor %= nota;
+			return notaSaque;
+		}).filter(nota => {
+			return nota.quantidade > 0;
+		}).reduce((resultado, nota) => {
+			if(resultado === 'Entregar') {
+				if(nota.quantidade > 1) {
+					return `${resultado} ${nota.quantidade} notas de R\$${nota.valor},00`
+				}
+				return `${resultado} ${nota.quantidade} nota de R\$${nota.valor},00`
+			}
+			return `${resultado} e ${nota.quantidade} nota de R\$${nota.valor},00`
+		}, "Entregar") + '.';
 	}
 }
