@@ -30,4 +30,8 @@ describe('Caixa eletrônico', function() {
 	it('libera saque de R$60', function() {
 		caixa.saca(60).should.equal('Entregar 1 nota de R$50,00 e 1 nota de R$10,00.');
 	});
+
+	it('libera saque de R$70', function() {
+		caixa.saca(70).should.equal('Entregar 1 nota de R$50,00 e 1 nota de R$20,00.');
+	});
 });
