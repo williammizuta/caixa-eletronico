@@ -1,11 +1,21 @@
 module.exports = {
 	saca: function(valor) {
-		if(valor === 40) {
-			return 'Entregar 2 notas de R$20,00.'
-		}
-		if(valor === 30) {
-			return 'Entregar 1 nota de R$20,00 e 1 nota de R$10,00.'
-		}
-		return 'Entregar 1 nota de R$' + valor + ',00.'
+		const notas = [20, 10];
+		let resposta = 'Entregar ';
+		notas.forEach(nota => {
+			let quantidade = Math.floor(valor / nota);
+			if(quantidade > 0) {
+				if(resposta !== 'Entregar ') {
+					resposta += ' e ';
+				}
+				if(quantidade === 1) {
+					resposta += `${quantidade} nota de R\$${nota},00`;
+				} else {
+					resposta += `${quantidade} notas de R\$${nota},00`;
+				}
+				valor %= nota;
+			}
+		});
+		return resposta + '.';
 	}
 }
