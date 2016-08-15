@@ -11,8 +11,8 @@ module.exports = {
 			return notaSaque;
 		}).filter(nota => {
 			return nota.quantidade > 0;
-		}).reduce((resultado, nota, indice) => {
-			if(indice !== 0) {
+		}).reduce((resultado, nota, indice, notas) => {
+			if(indice !== 0 && indice === notas.length - 1) {
 				resultado += ' e';
 			}
 			resultado += ` ${nota.quantidade} nota`;
