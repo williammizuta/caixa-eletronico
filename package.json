@@ -1,0 +1,28 @@
+{
+  "name": "caixa-eletronico",
+  "version": "1.0.0",
+  "description": "projeto utilizando TDD para resolver o problema do caixa eletrônico",
+  "main": "caixa-eletronico.js",
+  "scripts": {
+    "test": "mocha test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/williammizuta/caixa-eletronico.git"
+  },
+  "keywords": [
+    "JS",
+    "TDD",
+    "DOJO"
+  ],
+  "author": "William Seiti Mizuta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/williammizuta/caixa-eletronico/issues"
+  },
+  "homepage": "https://github.com/williammizuta/caixa-eletronico#readme",
+  "devDependencies": {
+    "chai": "3.5.0",
+    "mocha": "3.0.2"
+  }
+}
